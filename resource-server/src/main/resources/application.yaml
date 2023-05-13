@@ -41,4 +41,4 @@ currencies:
   - { id: "48543", symbol: "SOL" }
 
 server:
-  port: 8090
+  port: 8095
