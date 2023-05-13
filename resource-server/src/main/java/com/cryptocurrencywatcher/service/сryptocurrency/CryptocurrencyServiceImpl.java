@@ -19,11 +19,9 @@ import static java.lang.String.format;
 @Slf4j
 public class CryptocurrencyServiceImpl implements CryptocurrencyService {
 
-    private final String CRYPTOCURRENCY_URL = "https://api.coinlore.net/api/ticker/?id=%d";
     private final RestTemplate restTemplate = new RestTemplate();
     private final AvailableCryptocurrencyConfig availableCryptocurrencyConfig;
     private final CryptocurrencyRepository cryptocurrencyRepository;
-
 
     public CryptocurrencyServiceImpl(AvailableCryptocurrencyConfig availableCryptocurrencyConfig,
                                      CryptocurrencyRepository cryptocurrencyRepository) {
@@ -43,6 +41,8 @@ public class CryptocurrencyServiceImpl implements CryptocurrencyService {
         assert cryptocurrency != null;
         saveOrUpdateDatabase(cryptocurrency);
     }
+
+    private final String CRYPTOCURRENCY_URL = "https://api.coinlore.net/api/ticker/?id=%d";
 
     private Cryptocurrency getFromExternalSource(AvailableCryptocurrency availableCryptocurrency) {
 
@@ -64,5 +64,10 @@ public class CryptocurrencyServiceImpl implements CryptocurrencyService {
     private void saveOrUpdateDatabase(Cryptocurrency cryptocurrency) {
         cryptocurrencyRepository.save(cryptocurrency);
         log.info("update {}", cryptocurrency);
+    }
+
+    @Override
+    public Cryptocurrency getBySymbol(String symbol) {
+        return cryptocurrencyRepository.getBySymbol(symbol).orElse(null);
     }
 }
