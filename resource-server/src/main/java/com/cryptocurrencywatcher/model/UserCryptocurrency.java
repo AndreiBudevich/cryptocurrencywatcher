@@ -8,6 +8,8 @@ import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "user_cryptocurrency")
 @Getter
@@ -19,6 +21,9 @@ public class UserCryptocurrency extends BaseEntity {
     @JoinColumn(name = "user_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     User user;
+
+    @Column(name = "price")
+    BigDecimal price;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cryptocurrency_id")
