@@ -1,4 +1,4 @@
-package com.cryptocurrencywatcher.service;
+package com.cryptocurrencywatcher.service.availablecryptocurrency;
 
 import com.cryptocurrencywatcher.config.AvailableCryptocurrencyConfig;
 import com.cryptocurrencywatcher.model.AvailableCryptocurrency;
