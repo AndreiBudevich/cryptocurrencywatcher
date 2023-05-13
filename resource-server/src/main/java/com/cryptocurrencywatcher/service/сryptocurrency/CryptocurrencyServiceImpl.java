@@ -62,8 +62,8 @@ public class CryptocurrencyServiceImpl implements CryptocurrencyService {
     }
 
     private void saveOrUpdateDatabase(Cryptocurrency cryptocurrency) {
-        cryptocurrencyRepository.save(cryptocurrency);
-        log.info("update {}", cryptocurrency);
+        cryptocurrencyRepository.saveOrUpdate(cryptocurrency);
+        log.info("save or update {}", cryptocurrency);
     }
 
     @Override

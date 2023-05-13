@@ -15,7 +15,7 @@ public class CryptocurrencyRepositoryImpl implements CryptocurrencyRepository {
     }
 
     @Override
-    public Cryptocurrency save(Cryptocurrency cryptocurrency) {
+    public Cryptocurrency saveOrUpdate(Cryptocurrency cryptocurrency) {
         return cryptocurrencyCrudRepository.save(cryptocurrency);
     }
 

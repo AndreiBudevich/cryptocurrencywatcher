@@ -5,7 +5,8 @@ import com.cryptocurrencywatcher.model.Cryptocurrency;
 import java.util.Optional;
 
 public interface CryptocurrencyRepository {
-    Cryptocurrency save(Cryptocurrency cryptocurrency);
+
+    Cryptocurrency saveOrUpdate(Cryptocurrency cryptocurrency);
 
     Optional<Cryptocurrency> getBySymbol(String symbol);
 }
