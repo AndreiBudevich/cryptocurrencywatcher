@@ -22,4 +22,9 @@ public class User extends BaseEntity {
 
     @Column(name = "registration_time")
     private LocalDateTime registrationTime;
+
+    public User(String name, LocalDateTime registrationTime) {
+        this.name = name;
+        this.registrationTime = registrationTime;
+    }
 }
