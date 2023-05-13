@@ -3,6 +3,8 @@ package com.cryptocurrencywatcher.repository.usercryptocurrency;
 import com.cryptocurrencywatcher.model.UserCryptocurrency;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class UserCryptocurrencyRepositoryImpl implements UserCryptocurrencyRepository {
 
@@ -15,5 +17,10 @@ public class UserCryptocurrencyRepositoryImpl implements UserCryptocurrencyRepos
     @Override
     public UserCryptocurrency save(UserCryptocurrency userCryptocurrency) {
         return userCryptocurrencyCrudRepository.save(userCryptocurrency);
+    }
+
+    @Override
+    public List<UserCryptocurrency> getAllWithUserAndCryptocurrency() {
+        return userCryptocurrencyCrudRepository.getAllWithUserAndCryptocurrency();
     }
 }
