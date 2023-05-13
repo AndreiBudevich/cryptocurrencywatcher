@@ -17,8 +17,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User extends BaseEntity {
 
-    @Column(name = "symbol")
-    private String userName;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "registration_time")
     private LocalDateTime registrationTime;
