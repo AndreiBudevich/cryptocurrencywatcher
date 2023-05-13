@@ -18,9 +18,9 @@ spring:
       ddl-auto: create
     properties:
       hibernate:
-          format_sql: true
-          default_batch_fetch_size: 20
-          jdbc.batch_size: 20
+        format_sql: true
+        default_batch_fetch_size: 20
+        jdbc.batch_size: 20
 
   jackson:
     visibility:
@@ -35,10 +35,21 @@ spring:
       enabled: true
       force: true
 
-currencies:
-  - { id: "90", symbol: "BTC" }
-  - { id: "80", symbol: "ETH" }
-  - { id: "48543", symbol: "SOL" }
+available-cryptocurrency:
+  availableCryptocurrencies:
+    - id: 90
+      symbol: BTC
+    - id: 80
+      symbol: ETH
+    - id: 48543
+      symbol: SOL
+
+logging:
+  level:
+    root: info
+    com.cryptocurrencywatcher: debug
+  file:
+    name: logs/application.log
 
 server:
   port: 8095
