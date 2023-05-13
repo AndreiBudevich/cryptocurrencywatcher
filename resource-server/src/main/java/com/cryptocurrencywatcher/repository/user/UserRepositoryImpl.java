@@ -3,6 +3,8 @@ package com.cryptocurrencywatcher.repository.user;
 import com.cryptocurrencywatcher.model.User;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public class UserRepositoryImpl implements UserRepository {
 
@@ -10,6 +12,11 @@ public class UserRepositoryImpl implements UserRepository {
 
     public UserRepositoryImpl(UserCrudRepository userCrudRepository) {
         this.userCrudRepository = userCrudRepository;
+    }
+
+    @Override
+    public Optional<User> getByName(String name) {
+        return userCrudRepository.getByName(name);
     }
 
     @Override
