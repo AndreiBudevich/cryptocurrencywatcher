@@ -1,0 +1,31 @@
+volumes:
+  postgres_data:
+    driver: local
+
+services:
+
+  postgres-crypto-currency-watcher:
+    image: postgres:15.1
+    expose:
+      - "5439"
+    ports:
+      - "5439:5439"
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=crypto_currency_watcher_data
+    command: -p 5439
+
+  crypto-currency-watcher:
+    container_name: crypto-currency-watcher
+    image: crypto-currency-watcher
+    build: ./resource-server/
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-crypto-currency-watcher:5439/crypto_currency_watcher_data
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: admin
+      SPRING_DATASOURCE_DRIVERCLASSNAME: org.postgresql.Driver
+    ports:
+      - "8095:8095"
+    depends_on:
+      - postgres-crypto-currency-watcher
