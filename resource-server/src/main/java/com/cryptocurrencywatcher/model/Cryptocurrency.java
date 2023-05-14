@@ -88,4 +88,11 @@ public class Cryptocurrency extends BaseEntity {
     @Column(name = "m_supply")
     @JsonProperty("msupply")
     BigDecimal mSupply;
+
+    public Cryptocurrency(Integer id, String symbol, String name, String nameId) {
+        super(id);
+        this.symbol = symbol;
+        this.name = name;
+        this.nameId = nameId;
+    }
 }
