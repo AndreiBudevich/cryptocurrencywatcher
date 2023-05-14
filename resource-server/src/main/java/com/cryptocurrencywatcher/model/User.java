@@ -38,4 +38,9 @@ public class User extends BaseEntity {
         this.name = name;
         this.registrationTime = registrationTime;
     }
+
+    public User(Integer id, String name) {
+        super(id);
+        this.name = name;
+    }
 }
