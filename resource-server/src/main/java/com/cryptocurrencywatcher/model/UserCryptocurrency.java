@@ -1,6 +1,7 @@
 package com.cryptocurrencywatcher.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,17 +24,21 @@ public class UserCryptocurrency extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @NotNull
     User user;
 
     @Column(name = "price")
+    @NotNull
     BigDecimal price;
 
     @Column(name = "prise_time")
+    @NotNull
     private LocalDateTime priseTime;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cryptocurrency_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @NotNull
     Cryptocurrency cryptocurrency;
 
     public UserCryptocurrency(User user, BigDecimal price, LocalDateTime priseTime, Cryptocurrency cryptocurrency) {

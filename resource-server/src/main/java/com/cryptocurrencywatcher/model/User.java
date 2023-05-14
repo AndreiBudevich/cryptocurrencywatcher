@@ -1,9 +1,13 @@
 package com.cryptocurrencywatcher.model;
 
+import com.cryptocurrencywatcher.util.validation.NoHtml;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,9 +25,13 @@ import java.time.LocalDateTime;
 public class User extends BaseEntity {
 
     @Column(name = "name")
+    @NotBlank
+    @Size(min = 2, max = 120)
+    @NoHtml
     private String name;
 
     @Column(name = "registration_time")
+    @NotNull
     private LocalDateTime registrationTime;
 
     public User(String name, LocalDateTime registrationTime) {

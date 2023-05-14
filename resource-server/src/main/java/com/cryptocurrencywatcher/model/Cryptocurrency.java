@@ -1,11 +1,15 @@
 package com.cryptocurrencywatcher.model;
 
+import com.cryptocurrencywatcher.util.validation.NoHtml;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,13 +28,18 @@ import java.math.BigDecimal;
 public class Cryptocurrency extends BaseEntity {
 
     @Column(name = "symbol")
+    @NotBlank
+    @Size(min = 2, max = 20)
+    @NoHtml
     private String symbol;
 
     @Column(name = "name")
+    @NoHtml
     private String name;
 
     @Column(name = "name_id")
     @JsonProperty("nameid")
+    @NoHtml
     private String nameId;
 
     @Column(name = "rank")
@@ -38,6 +47,7 @@ public class Cryptocurrency extends BaseEntity {
 
     @Column(name = "price_usd")
     @JsonProperty("price_usd")
+    @NotNull
     private BigDecimal priceUsd;
 
     @Column(name = "percent_change_24h")
