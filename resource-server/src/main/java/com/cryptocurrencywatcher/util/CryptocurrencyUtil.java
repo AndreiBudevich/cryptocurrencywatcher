@@ -16,6 +16,8 @@ import static java.math.RoundingMode.HALF_UP;
 @UtilityClass
 public class CryptocurrencyUtil {
 
+    private static final BigDecimal ONE_HUNDRED = BigDecimal.valueOf(100);
+
     public static Map<String, List<UserCryptocurrency>> getAllUserCryptocurrencies(UserCryptocurrencyRepository userCryptocurrencyRepository) {
         return userCryptocurrencyRepository.getAllWithUserAndCryptocurrency().stream()
                 .collect(Collectors.groupingBy(uc -> uc.getCryptocurrency().getSymbol()));
@@ -24,8 +26,6 @@ public class CryptocurrencyUtil {
     public static Boolean compareToPercentage(BigDecimal percentage) {
         return percentage.compareTo(BigDecimal.ONE) > 0;
     }
-
-    private static final BigDecimal ONE_HUNDRED = BigDecimal.valueOf(100);
 
     public static BigDecimal calculationOfExcessPercentageAbs(BigDecimal dividend, BigDecimal divider) {
         return multiplyAndSubtractAndRounding100(dividend.divide(divider, 4, HALF_UP)).abs();
