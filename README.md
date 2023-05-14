@@ -1,5 +1,7 @@
 ## Crypto Currency watcher
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/7b5b19240d374ba287409aa7554fafe2)](https://app.codacy.com/gh/AndreiBudevich/cryptocurrencywatcher/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+
 -----------------------------
 Написать простой REST-сервис просмотра котировок криптовалют
 
