@@ -29,7 +29,6 @@ import static com.cryptocurrencywatcher.util.DateTimeUtil.getCurrentDateTime;
 public class UserController {
 
     static final String REST_URL = "/api/users";
-
     private final UserService userService;
     private final CryptocurrencyService cryptocurrencyService;
     private final UserCryptocurrencyService userCryptocurrencyService;
