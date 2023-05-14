@@ -6,6 +6,8 @@ import com.cryptocurrencywatcher.model.UserCryptocurrency;
 import com.cryptocurrencywatcher.service.user.UserService;
 import com.cryptocurrencywatcher.service.usercryptocurrency.UserCryptocurrencyService;
 import com.cryptocurrencywatcher.service.сryptocurrency.CryptocurrencyService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,7 @@ import static com.cryptocurrencywatcher.util.DateTimeUtil.getCurrentDateTime;
 @RestController
 @Slf4j
 @RequestMapping(value = UserController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
+@Tag(name = "Rest controller by user", description = "Allows users operations")
 public class UserController {
 
     static final String REST_URL = "/api/users";
@@ -38,6 +41,7 @@ public class UserController {
     }
 
     @PostMapping(value = "/register")
+    @Operation(description = "registration user with need cryptocurrency")
     public ResponseEntity<User> createWithLocation(@RequestParam String name, @RequestParam String symbol, @RequestParam BigDecimal price) {
 
         User user = new User(name, getCurrentDateTime());
