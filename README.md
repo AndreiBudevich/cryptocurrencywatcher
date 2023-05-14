@@ -22,6 +22,8 @@ Cписок доступных криптовалют предопределен
 
 
 -------------------------------------------------------------
-- Stack: [JDK 17](http://jdk.java.net/17/), Spring Boot 3.0.1, Lombok, Postgres
+- Stack: [JDK 17](http://jdk.java.net/17/), Spring Boot 3.0.1, Lombok, Postgres, Swagger
 -----------------------------------------------------
+
+[REST API documentation](http://localhost:8095/swagger-ui/index.html)  
 
