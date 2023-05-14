@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static com.cryptocurrencywatcher.util.validation.ValidationUtil.checkNotFoundWithStatus;
 import static java.lang.String.format;
 import static java.math.RoundingMode.HALF_UP;
 
@@ -54,7 +55,7 @@ public class CryptocurrencyServiceImpl implements CryptocurrencyService {
         String currentSymbol = cryptocurrency.getSymbol();
 
         List<UserCryptocurrency> userCryptocurrenciesByCurrentSymbol = userCryptocurrencies.get(cryptocurrency.getSymbol());
-        userCryptocurrenciesByCurrentSymbol.forEach(userCryptocurrency -> checkingPriceChanges (userCryptocurrency, saveCryptocurrency, currentSymbol));
+        userCryptocurrenciesByCurrentSymbol.forEach(userCryptocurrency -> checkingPriceChanges(userCryptocurrency, saveCryptocurrency, currentSymbol));
     }
 
     private void checkingPriceChanges(UserCryptocurrency userCryptocurrency, Cryptocurrency cryptocurrency, String currentSymbol) {
@@ -64,7 +65,7 @@ public class CryptocurrencyServiceImpl implements CryptocurrencyService {
         BigDecimal percentage = calculationOfExcessPercentage(priceUser, currentPrice).abs();
         if (percentage.compareTo(BigDecimal.ONE) > 0) {
             String name = userCryptocurrency.getUser().getName();
-            log.warn(currentSymbol + " : "  + name  + " : " + percentage);
+            log.warn(currentSymbol + " : " + name + " : " + percentage);
         }
     }
 
@@ -105,6 +106,6 @@ public class CryptocurrencyServiceImpl implements CryptocurrencyService {
 
     @Override
     public Cryptocurrency getBySymbol(String symbol) {
-        return cryptocurrencyRepository.getBySymbol(symbol).orElse(null);
+        return checkNotFoundWithStatus(cryptocurrencyRepository.getBySymbol(symbol).orElse(null));
     }
 }
