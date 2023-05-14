@@ -5,6 +5,7 @@ import com.cryptocurrencywatcher.MatcherFactory;
 import com.cryptocurrencywatcher.model.AvailableCryptocurrency;
 
 public class AvailableCryptocurrencyTestData {
+
     public static final int AVAILABLE_CRYPTOCURRENCY_ID_1 = 90;
     public static final int AVAILABLE_CRYPTOCURRENCY_ID_2 = 80;
     public static final int AVAILABLE_CRYPTOCURRENCY_ID_3 = 48543;
