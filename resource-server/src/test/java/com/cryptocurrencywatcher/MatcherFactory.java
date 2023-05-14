@@ -52,7 +52,7 @@ public class MatcherFactory {
         }
 
         public ResultMatcher contentJson(Iterable<T> expected) {
-            return result -> assertMatch(JsonUtil.readTestValues(getContent(result), clazz), expected);
+            return result -> assertMatch(JsonUtil.readListValues(getContent(result), clazz), expected);
         }
 
         public T readFromJson(ResultActions action) throws UnsupportedEncodingException {
